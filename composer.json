@@ -1,16 +1,16 @@
 {
-    "name": "paysera/commission-task-skeleton",
-    "description": "Skeleton for Paysera recruitment task",
+    "name": "mjmconvento/commission-task-skeleton",
+    "description": "Skeleton for recruitment task",
     "keywords": [],
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Paysera\\CommissionTask\\": "src"
+            "CommissionTask\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Paysera\\CommissionTask\\Tests\\": "tests"
+            "CommissionTask\\Tests\\": "tests"
         }
     },
     "require": {

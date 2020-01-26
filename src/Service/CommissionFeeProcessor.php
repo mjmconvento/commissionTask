@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Paysera\CommissionTask\Service;
+namespace CommissionTask\Service;
 
-use Paysera\CommissionTask\Interfaces\FormatterInterface;
+use CommissionTask\Interfaces\FormatterInterface;
 
 class CommissionFeeProcessor
 {

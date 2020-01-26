@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Paysera\CommissionTask\Interfaces;
+namespace CommissionTask\Interfaces;
 
 interface FormatterInterface
 {

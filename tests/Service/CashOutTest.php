@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Paysera\CommissionTask\Tests\Service;
+namespace CommissionTask\Tests\Service;
 
-use Paysera\CommissionTask\Service\CashOut;
+use CommissionTask\Service\CashOut;
 use PHPUnit\Framework\TestCase;
 
 class CashOutTest extends TestCase

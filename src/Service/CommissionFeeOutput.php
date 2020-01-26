@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Paysera\CommissionTask\Service;
+namespace CommissionTask\Service;
 
-use Paysera\CommissionTask\Interfaces\OutputInterface;
+use CommissionTask\Interfaces\OutputInterface;
 
 class CommissionFeeOutput implements OutputInterface
 {

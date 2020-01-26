@@ -2,13 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Paysera\CommissionTask\Service;
-
 include('vendor\autoload.php');
 
-use Paysera\CommissionTask\Service\CommissionFeeOutput;
-use Paysera\CommissionTask\Service\CommissionFeeProcessor;
-use Paysera\CommissionTask\Service\CommissionFeeFormatter;
+use CommissionTask\Service\CommissionFeeOutput;
+use CommissionTask\Service\CommissionFeeProcessor;
+use CommissionTask\Service\CommissionFeeFormatter;
 
 try {
     $csv = array_map('str_getcsv', file($argv[1]));

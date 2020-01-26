@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Paysera\CommissionTask\Tests\Service;
+namespace CommissionTask\Tests\Service;
 
-use Paysera\CommissionTask\Service\CommissionFeeFormatter;
-use Paysera\CommissionTask\Service\CommissionFeeProcessor;
+use CommissionTask\Service\CommissionFeeFormatter;
+use CommissionTask\Service\CommissionFeeProcessor;
 use PHPUnit\Framework\TestCase;
 
 class CommissionFeeProcessorTest extends TestCase
