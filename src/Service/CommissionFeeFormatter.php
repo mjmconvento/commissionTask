@@ -9,8 +9,6 @@ use CommissionTask\Interfaces\FormatterInterface;
 class CommissionFeeFormatter implements FormatterInterface
 {
     /**
-     * @param float $value
-     *
      * @return string
      */
     public function format(float $value): string
