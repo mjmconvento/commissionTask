@@ -8,6 +8,9 @@ use CommissionTask\Interfaces\OutputInterface;
 
 class CommissionFeeOutput implements OutputInterface
 {
+    /**
+     * @param array $data
+     */
     public function show(array $data): void
     {
         foreach ($data as $d) {
