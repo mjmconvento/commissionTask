@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-include('vendor\autoload.php');
+require_once __DIR__ . '/vendor/autoload.php'; 
 
 use CommissionTask\Service\CommissionFeeOutput;
 use CommissionTask\Service\CommissionFeeProcessor;
