@@ -9,16 +9,6 @@ use CommissionTask\Interfaces\FormatterInterface;
 class CommissionFeeProcessor
 {
     /**
-     * @var string CASH_IN
-     */
-    private const CASH_IN = 'cash_in';
-
-    /**
-     * @var string CASH_OUT
-     */
-    private const CASH_OUT = 'cash_out';
-
-    /**
      * @var FormatterInterface
      */
     private $formatter;
@@ -39,10 +29,10 @@ class CommissionFeeProcessor
             $operationType = null;
 
             switch ($value[3]) {
-                case self::CASH_IN:
+                case CashConfiguration::CASH_IN:
                     $operationType = new CashIn();
                     break;
-                case self::CASH_OUT:
+                case CashConfiguration::CASH_OUT:
                     $operationType = new CashOut();
                     break;
             }

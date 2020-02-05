@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace CommissionTask\Tests\Service;
 
+use CommissionTask\Service\CashConfiguration;
 use CommissionTask\Service\CommissionFeeFormatter;
 use CommissionTask\Service\CommissionFeeProcessor;
 use PHPUnit\Framework\TestCase;
@@ -41,119 +42,132 @@ class CommissionFeeProcessorTest extends TestCase
      */
     public function dataProviderForProcessTesting(): array
     {
+        $valueIndexZero = 1200.00;
+        $valueIndexOne = 1000.00;
+        $valueIndexTwo = 1000.00;
+        $valueIndexThree = 200.00;
+        $valueIndexFour = 300.00;
+        $valueIndexFive = 1000.00;
+        $valueIndexSix = 100.00;
+        $valueIndexSeven = 1000000.00;
+        $valueIndexEight = 1000.00;
+        $valueIndexNine = 300.00;
+        $valueIndexTen = 100.00;
+        $valueIndexEleven = 3000000;
+
         return [
             'test array of commission fee processor' => [
                 [
                     [
                         '2014-12-31',
                         4,
-                        'natural',
-                        'cash_out',
-                        1200.00,
+                        CashConfiguration::NATURAL,
+                        CashConfiguration::CASH_OUT,
+                        $valueIndexZero,
                         'EUR'
                     ], 
                     [
                         '2015-01-01',
                         4,
-                        'natural',
-                        'cash_out',
-                        1000.00,
+                        CashConfiguration::NATURAL,
+                        CashConfiguration::CASH_OUT,
+                        $valueIndexOne,
                         'EUR'
                     ],
                     [
                         '2016-01-05',
                         4,
-                        'natural',
-                        'cash_out',
-                        1000.00,
+                        CashConfiguration::NATURAL,
+                        CashConfiguration::CASH_OUT,
+                        $valueIndexTwo,
                         'EUR'
                     ],
                     [
                         '2016-01-05',
                         1,
-                        'natural',
-                        'cash_in',
-                        200.00,
+                        CashConfiguration::NATURAL,
+                        CashConfiguration::CASH_IN,
+                        $valueIndexThree,
                         'EUR'
                     ],
                     [
                         '2016-01-06',
                         2,
-                        'legal',
-                        'cash_out',
-                        300.00,
+                        CashConfiguration::LEGAL,
+                        CashConfiguration::CASH_OUT,
+                        $valueIndexFour,
                         'EUR'
                     ],
                     [
                         '2016-01-07',
                         1,
-                        'natural',
-                        'cash_out',
-                        1000.00,
+                        CashConfiguration::NATURAL,
+                        CashConfiguration::CASH_OUT,
+                        $valueIndexFive,
                         'EUR'
                     ],
                     [
                         '2016-01-10',
                         1,
-                        'natural',
-                        'cash_out',
-                        100.00,
+                        CashConfiguration::NATURAL,
+                        CashConfiguration::CASH_OUT,
+                        $valueIndexSix,
                         'EUR'
                     ],
                     [
                         '2016-01-10',
                         2,
                         'legal',
-                        'cash_in',
-                        1000000.00,
+                        CashConfiguration::CASH_IN,
+                        $valueIndexSeven,
                         'EUR'
                     ],
                     [
                         '2016-01-10',
                         3,
-                        'natural',
-                        'cash_out',
-                        1000.00,
+                        CashConfiguration::NATURAL,
+                        CashConfiguration::CASH_OUT,
+                        $valueIndexEight,
                         'EUR'
                     ],
                     [
                         '2016-02-15',
                         1,
-                        'natural',
-                        'cash_out',
-                        300.00,
+                        CashConfiguration::NATURAL,
+                        CashConfiguration::CASH_OUT,
+                        $valueIndexNine,
                         'EUR'
                     ],
                     [
                         '2016-01-07',
                         1,
-                        'natural',
-                        'cash_out',
-                        100.00,
+                        CashConfiguration::NATURAL,
+                        CashConfiguration::CASH_OUT,
+                        $valueIndexTen,
                         'USD'
                     ],
                     [
                         '2016-02-19',
                         5,
-                        'natural',
-                        'cash_out',
-                        3000000,
+                        CashConfiguration::NATURAL,
+                        CashConfiguration::CASH_OUT,
+                        $valueIndexEleven,
                         'JPY'
                     ]
                 ],
                 [
-                    '3.60',
-                    '3.00',
-                    '3.00',
-                    '0.06',
-                    '0.90',
-                    '3.00',
-                    '0.30',
-                    '5.00',
-                    '3.00',
-                    '0.90',
-                    '0.30',
-                    '9000.00'
+                    $valueIndexZero * CashConfiguration::CASHOUT_COMMISSION_MULTIPLIER,
+                    $valueIndexOne * CashConfiguration::CASHOUT_COMMISSION_MULTIPLIER,
+                    $valueIndexTwo * CashConfiguration::CASHOUT_COMMISSION_MULTIPLIER,
+                    $valueIndexThree * CashConfiguration::CASHIN_COMMISSION_MULTIPLIER,
+                    $valueIndexFour * CashConfiguration::CASHOUT_COMMISSION_MULTIPLIER,
+                    $valueIndexFive * CashConfiguration::CASHOUT_COMMISSION_MULTIPLIER,
+                    $valueIndexSix * CashConfiguration::CASHOUT_COMMISSION_MULTIPLIER,
+                    CashConfiguration::CASHIN_MAXIMUM_VALUE,
+                    $valueIndexEight * CashConfiguration::CASHOUT_COMMISSION_MULTIPLIER,
+                    $valueIndexNine * CashConfiguration::CASHOUT_COMMISSION_MULTIPLIER,
+                    $valueIndexTen * CashConfiguration::CASHOUT_COMMISSION_MULTIPLIER,
+                    $valueIndexEleven * CashConfiguration::CASHOUT_COMMISSION_MULTIPLIER
                 ]
             ]
         ];

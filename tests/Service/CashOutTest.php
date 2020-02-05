@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace CommissionTask\Tests\Service;
 
+use CommissionTask\Service\CashConfiguration;
 use CommissionTask\Service\CashOut;
 use PHPUnit\Framework\TestCase;
 
@@ -16,7 +17,7 @@ class CashOutTest extends TestCase
 
     public function setUp()
     {
-        $this->cashOut = new CashOut();
+        $this->cashOut = new CashOut;
     }
 
     /**
@@ -35,27 +36,29 @@ class CashOutTest extends TestCase
 
     public function dataProviderForGetCommissionTesting(): array
     {
+        $total = 10000 * CashConfiguration::CASHOUT_COMMISSION_MULTIPLIER;
+
         return [
             'test natural type commission' => [
                 [
                     2 => 'natural',
                     4 => 10000
                 ],
-                '30'
+                $total 
             ],
             'test legal type commission' => [
                 [
                     2 => 'legal',
                     4 => 10000
                 ],
-                '30'
+                $total
             ],
             'test legal type minimum commission' => [
                 [
                     2 => 'legal',
                     4 => 100
                 ],
-                '.5'
+                CashConfiguration::CASHOUT_MINIMUM_VALUE
             ]
         ];
     }

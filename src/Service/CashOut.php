@@ -6,26 +6,6 @@ namespace CommissionTask\Service;
 
 class CashOut
 {
-    /**
-     * @var string NATURAL
-     */
-    private const NATURAL = 'natural';
-
-    /**
-     * @var string LEGAL
-     */
-    private const LEGAL = 'legal';
-
-    /**
-     * @var float COMMISSION_MULTIPLIER
-     */
-    private const COMMISSION_MULTIPLIER = .003;
-
-    /**
-     * @var float MINIMUM_VALUE
-     */
-    private const MINIMUM_VALUE = .5;
-
     public function getCommission(int $key, array $value): float
     {
         $type = $value[2];
@@ -35,16 +15,16 @@ class CashOut
             throw new \Exception(sprintf('Invalid amount on line %s', $key + 1));
         }
 
-        if ($type !== self::NATURAL && $type !== self::LEGAL) {
+        if ($type !== CashConfiguration::NATURAL && $type !== CashConfiguration::LEGAL) {
             throw new \Exception(sprintf('Invalid user type on line %s', $key + 1));
         }
 
-        if ($type === self::NATURAL) {
-            return $amount * self::COMMISSION_MULTIPLIER;
-        } elseif ($type === self::LEGAL) {
-            $total = $amount * self::COMMISSION_MULTIPLIER;
+        $total = $amount * CashConfiguration::CASHOUT_COMMISSION_MULTIPLIER;
 
-            return $total <= self::MINIMUM_VALUE ? self::MINIMUM_VALUE : $total;
+        if ($type === CashConfiguration::NATURAL) {
+            return $total;
+        } elseif ($type === CashConfiguration::LEGAL) {
+            return $total <= CashConfiguration::CASHOUT_MINIMUM_VALUE ? CashConfiguration::CASHOUT_MINIMUM_VALUE : $total;
         }
     }
 }

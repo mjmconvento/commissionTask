@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace CommissionTask\Tests\Service;
 
+use CommissionTask\Service\CashConfiguration;
 use CommissionTask\Service\CashIn;
 use PHPUnit\Framework\TestCase;
 
@@ -16,7 +17,7 @@ class CashInTest extends TestCase
 
     public function setUp()
     {
-        $this->cashIn = new CashIn();
+        $this->cashIn = new CashIn;
     }
 
     /**
@@ -38,18 +39,20 @@ class CashInTest extends TestCase
      */
     public function dataProviderForGetCommissionTesting(): array
     {
+        $value = 10000;
+
         return [
-            'test .03% commision' => [
+            'test commision multiplier' => [
                 [
-                    4 => 10000
+                    4 => $value
                 ],
-                3
+                $value * CashConfiguration::CASHIN_COMMISSION_MULTIPLIER
             ],
             'test if it returns 5 as maximum value' => [
                 [
                     4 => 999999
                 ],
-                5
+                CashConfiguration::CASHIN_MAXIMUM_VALUE
             ]
         ];
     }
